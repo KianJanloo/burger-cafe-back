@@ -14,6 +14,7 @@ import { ContactUsModule } from './contact-us/contact-us.module';
 import { FaqModule } from './faq/faq.module';
 import { CartModule } from './cart/cart.module';
 import { OrdersModule } from './orders/orders.module';
+import * as entities from './entities';
 
 @Module({
   imports: [
@@ -30,8 +31,9 @@ import { OrdersModule } from './orders/orders.module';
         username: configService.get<string>('DB_USERNAME', 'postgres'),
         password: configService.get<string>('DB_PASSWORD', ''),
         database: configService.get<string>('DB_NAME', 'burger_cafe_db'),
-        autoLoadEntities: true,
+        entities: Object.values(entities),
         synchronize: configService.get<string>('NODE_ENV') === 'development',
+        logging: configService.get<string>('NODE_ENV') === 'development',
       }),
       inject: [ConfigService],
     }),
