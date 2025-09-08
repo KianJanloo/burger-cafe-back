@@ -14,7 +14,6 @@ import { ContactUsModule } from './contact-us/contact-us.module';
 import { FaqModule } from './faq/faq.module';
 import { CartModule } from './cart/cart.module';
 import { OrdersModule } from './orders/orders.module';
-import * as entities from './entities';
 
 @Module({
   imports: [
@@ -29,9 +28,9 @@ import * as entities from './entities';
         host: configService.get<string>('DB_HOST', 'localhost'),
         port: configService.get<number>('DB_PORT', 5432),
         username: configService.get<string>('DB_USERNAME', 'postgres'),
-        password: configService.get<string>('DB_PASSWORD', ''),
-        database: configService.get<string>('DB_NAME', 'burger_cafe_db'),
-        entities: Object.values(entities),
+        password: configService.get<string>('DB_PASSWORD', '1388ki8831'),
+        database: configService.get<string>('DB_NAME', 'postgres'),
+        entities: [`${__dirname}/**/*.entity{.ts,.js}`],
         synchronize: configService.get<string>('NODE_ENV') === 'development',
         logging: configService.get<string>('NODE_ENV') === 'development',
       }),
