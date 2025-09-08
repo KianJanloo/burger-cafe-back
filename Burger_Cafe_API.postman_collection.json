@@ -1,0 +1,1399 @@
+{
+  "info": {
+    "name": "Burger Cafe API",
+    "description": "Complete API collection for Burger Cafe Backend - A comprehensive restaurant management system",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "version": "1.0.0"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Menu Management",
+      "item": [
+        {
+          "name": "Get All Menu Items",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/menu",
+              "host": ["{{baseUrl}}"],
+              "path": ["menu"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Menu Item by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/menu/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["menu", "1"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Menu Item",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Classic Burger\",\n  \"price\": 15.99,\n  \"description\": \"Juicy beef patty with lettuce, tomato, and our special sauce\",\n  \"image\": \"https://example.com/burger.jpg\",\n  \"category\": \"Burgers\",\n  \"duration\": 15\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/menu",
+              "host": ["{{baseUrl}}"],
+              "path": ["menu"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Menu Item",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Deluxe Classic Burger\",\n  \"price\": 17.99,\n  \"description\": \"Enhanced juicy beef patty with premium ingredients\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/menu/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["menu", "1"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Menu Item",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/menu/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["menu", "1"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Order Management",
+      "item": [
+        {
+          "name": "Get All Orders",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/orders",
+              "host": ["{{baseUrl}}"],
+              "path": ["orders"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Orders by Status",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/orders?status=pending",
+              "host": ["{{baseUrl}}"],
+              "path": ["orders"],
+              "query": [
+                {
+                  "key": "status",
+                  "value": "pending"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Orders by Type",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/orders?orderType=delivery",
+              "host": ["{{baseUrl}}"],
+              "path": ["orders"],
+              "query": [
+                {
+                  "key": "orderType",
+                  "value": "delivery"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Order by Order Number",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/orders/order-number/ORD-2024-001",
+              "host": ["{{baseUrl}}"],
+              "path": ["orders", "order-number", "ORD-2024-001"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Order by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/orders/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["orders", "1"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Order",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customerName\": \"John Doe\",\n  \"customerPhone\": \"+1234567890\",\n  \"customerEmail\": \"john@example.com\",\n  \"orderType\": \"delivery\",\n  \"items\": [\n    {\n      \"foodId\": 1,\n      \"foodName\": \"Classic Burger\",\n      \"quantity\": 2,\n      \"price\": 15.99\n    }\n  ],\n  \"subtotal\": 31.98,\n  \"deliveryFee\": 3.00,\n  \"tax\": 2.80,\n  \"total\": 37.78,\n  \"specialInstructions\": \"Extra pickles, no onions\",\n  \"deliveryAddress\": \"123 Main St, City, State 12345\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/orders",
+              "host": ["{{baseUrl}}"],
+              "path": ["orders"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Order",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"specialInstructions\": \"Updated: Extra pickles, no onions, well done\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/orders/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["orders", "1"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Order Status",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"preparing\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/orders/1/status",
+              "host": ["{{baseUrl}}"],
+              "path": ["orders", "1", "status"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Order",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/orders/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["orders", "1"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Reservation Management",
+      "item": [
+        {
+          "name": "Get All Reservations",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/reservation",
+              "host": ["{{baseUrl}}"],
+              "path": ["reservation"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Reservations by Date",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/reservation?date=2024-01-15",
+              "host": ["{{baseUrl}}"],
+              "path": ["reservation"],
+              "query": [
+                {
+                  "key": "date",
+                  "value": "2024-01-15"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Reservation by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/reservation/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["reservation", "1"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Reservation",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"fullName\": \"Jane Smith\",\n  \"phoneNumber\": \"+1234567890\",\n  \"email\": \"jane@example.com\",\n  \"date\": \"2024-01-15\",\n  \"time\": \"19:00\",\n  \"customerCount\": 4,\n  \"specialRequest\": \"Window table preferred\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/reservation",
+              "host": ["{{baseUrl}}"],
+              "path": ["reservation"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Reservation",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customerCount\": 6,\n  \"specialRequest\": \"Updated: Private booth preferred\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/reservation/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["reservation", "1"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Reservation Status",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"confirmed\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/reservation/1/status",
+              "host": ["{{baseUrl}}"],
+              "path": ["reservation", "1", "status"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Reservation",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/reservation/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["reservation", "1"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Cart Management",
+      "item": [
+        {
+          "name": "Get Cart by Session ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/cart?sessionId=session123",
+              "host": ["{{baseUrl}}"],
+              "path": ["cart"],
+              "query": [
+                {
+                  "key": "sessionId",
+                  "value": "session123"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Cart Total",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/cart/total?sessionId=session123",
+              "host": ["{{baseUrl}}"],
+              "path": ["cart", "total"],
+              "query": [
+                {
+                  "key": "sessionId",
+                  "value": "session123"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Cart Item by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/cart/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["cart", "1"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Add Item to Cart",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"sessionId\": \"session123\",\n  \"foodId\": 1,\n  \"foodName\": \"Classic Burger\",\n  \"foodPrice\": 15.99,\n  \"quantity\": 2,\n  \"specialInstructions\": \"Extra pickles\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/cart",
+              "host": ["{{baseUrl}}"],
+              "path": ["cart"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Cart Item",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"quantity\": 3,\n  \"specialInstructions\": \"Updated: Extra pickles, no onions\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/cart/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["cart", "1"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Cart Item Quantity",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"quantity\": 4\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/cart/1/quantity",
+              "host": ["{{baseUrl}}"],
+              "path": ["cart", "1", "quantity"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Remove Cart Item",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/cart/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["cart", "1"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Clear Cart Session",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/cart/session/session123",
+              "host": ["{{baseUrl}}"],
+              "path": ["cart", "session", "session123"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "About Us Management",
+      "item": [
+        {
+          "name": "Story Management",
+          "item": [
+            {
+              "name": "Get Story",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/about-us/story",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["about-us", "story"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Create Story",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"story\": \"Founded in 2020, our burger cafe has been serving the community with passion and quality ingredients. We believe in creating memorable dining experiences through our carefully crafted burgers and warm hospitality.\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/about-us/story",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["about-us", "story"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Update Story",
+              "request": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"story\": \"Updated story content with more details about our journey and commitment to quality.\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/about-us/story/1",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["about-us", "story", "1"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Delete Story",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/about-us/story/1",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["about-us", "story", "1"]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Team Management",
+          "item": [
+            {
+              "name": "Get All Team Members",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/about-us/team",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["about-us", "team"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get Team Member by ID",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/about-us/team/1",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["about-us", "team", "1"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Create Team Member",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Chef Michael Johnson\",\n  \"position\": \"Head Chef\",\n  \"experience\": 8,\n  \"skills\": \"Grilling, Seasoning, Menu Development\",\n  \"image\": \"https://example.com/chef-michael.jpg\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/about-us/team",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["about-us", "team"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Update Team Member",
+              "request": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"position\": \"Executive Chef\",\n  \"experience\": 10,\n  \"skills\": \"Grilling, Seasoning, Menu Development, Team Leadership\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/about-us/team/1",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["about-us", "team", "1"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Delete Team Member",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/about-us/team/1",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["about-us", "team", "1"]
+                }
+              },
+              "response": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Cafe Details Management",
+      "item": [
+        {
+          "name": "Get All Cafe Details",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/cafe-details",
+              "host": ["{{baseUrl}}"],
+              "path": ["cafe-details"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Cafe Details by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/cafe-details/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["cafe-details", "1"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Cafe Details",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"kindOfBurgers\": 25,\n  \"experience\": 4,\n  \"rate\": 4.8,\n  \"customers\": 1500\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/cafe-details",
+              "host": ["{{baseUrl}}"],
+              "path": ["cafe-details"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Cafe Details",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"kindOfBurgers\": 30,\n  \"customers\": 2000\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/cafe-details/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["cafe-details", "1"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Cafe Details",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/cafe-details/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["cafe-details", "1"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "FAQ Management",
+      "item": [
+        {
+          "name": "Get All FAQs",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/faq",
+              "host": ["{{baseUrl}}"],
+              "path": ["faq"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get All FAQs (Admin)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/faq/admin",
+              "host": ["{{baseUrl}}"],
+              "path": ["faq", "admin"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get FAQ by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/faq/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["faq", "1"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create FAQ",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"question\": \"What are your operating hours?\",\n  \"answer\": \"We are open Monday to Sunday from 11:00 AM to 10:00 PM.\",\n  \"order\": 1,\n  \"isActive\": true\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/faq",
+              "host": ["{{baseUrl}}"],
+              "path": ["faq"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update FAQ",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"answer\": \"We are open Monday to Sunday from 11:00 AM to 11:00 PM during weekends.\",\n  \"isActive\": true\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/faq/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["faq", "1"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete FAQ",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/faq/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["faq", "1"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Contact Us Management",
+      "item": [
+        {
+          "name": "Get All Contact Messages",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/contact-us",
+              "host": ["{{baseUrl}}"],
+              "path": ["contact-us"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Contact Messages by Status",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/contact-us?status=pending",
+              "host": ["{{baseUrl}}"],
+              "path": ["contact-us"],
+              "query": [
+                {
+                  "key": "status",
+                  "value": "pending"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Contact Message by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/contact-us/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["contact-us", "1"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Contact Message",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"fullName\": \"Sarah Wilson\",\n  \"email\": \"sarah@example.com\",\n  \"phoneNumber\": \"+1234567890\",\n  \"subject\": \"Catering Inquiry\",\n  \"message\": \"I would like to inquire about catering services for a corporate event next month.\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/contact-us",
+              "host": ["{{baseUrl}}"],
+              "path": ["contact-us"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Contact Message",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"subject\": \"Updated: Catering Inquiry - Urgent\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/contact-us/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["contact-us", "1"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Contact Message Status",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"responded\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/contact-us/1/status",
+              "host": ["{{baseUrl}}"],
+              "path": ["contact-us", "1", "status"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Contact Message",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/contact-us/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["contact-us", "1"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Comments Management",
+      "item": [
+        {
+          "name": "Get All Comments",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/comments",
+              "host": ["{{baseUrl}}"],
+              "path": ["comments"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Comment by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/comments/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["comments", "1"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Comment",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"content\": \"Amazing burgers! The quality and taste are outstanding. Highly recommended!\",\n  \"rating\": 5,\n  \"authorName\": \"Mike Thompson\",\n  \"authorJob\": \"Food Blogger\",\n  \"authorImage\": \"https://example.com/mike-thompson.jpg\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/comments",
+              "host": ["{{baseUrl}}"],
+              "path": ["comments"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Comment",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"content\": \"Updated: Amazing burgers! The quality and taste are outstanding. The service was also excellent. Highly recommended!\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/comments/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["comments", "1"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Comment",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/comments/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["comments", "1"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Footer Management",
+      "item": [
+        {
+          "name": "Get All Footer Info",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/footer",
+              "host": ["{{baseUrl}}"],
+              "path": ["footer"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Footer Info by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/footer/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["footer", "1"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Footer Info",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"phoneNumber\": \"+1 (555) 123-4567\",\n  \"email\": \"info@burgercafe.com\",\n  \"address\": \"123 Main Street, City, State 12345\",\n  \"workTime\": \"Mon-Sun: 11:00 AM - 10:00 PM\",\n  \"currentLocation\": \"Downtown City Center\",\n  \"instagram\": \"@burgercafe\",\n  \"facebook\": \"BurgerCafeOfficial\",\n  \"twitter\": \"@BurgerCafe\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/footer",
+              "host": ["{{baseUrl}}"],
+              "path": ["footer"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Footer Info",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"workTime\": \"Mon-Sun: 11:00 AM - 11:00 PM\",\n  \"phoneNumber\": \"+1 (555) 123-4568\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/footer/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["footer", "1"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Footer Info",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/footer/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["footer", "1"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Gallery Management",
+      "item": [
+        {
+          "name": "Gallery Categories",
+          "item": [
+            {
+              "name": "Get All Categories",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/gallery/categories",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["gallery", "categories"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get Category by ID",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/gallery/categories/1",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["gallery", "categories", "1"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Create Category",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Food Gallery\",\n  \"description\": \"Delicious burgers and meals from our kitchen\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/gallery/categories",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["gallery", "categories"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Update Category",
+              "request": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Featured Food Gallery\",\n  \"description\": \"Our most popular and delicious burgers and meals\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/gallery/categories/1",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["gallery", "categories", "1"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Delete Category",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/gallery/categories/1",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["gallery", "categories", "1"]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Gallery Items",
+          "item": [
+            {
+              "name": "Get All Gallery Items",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/gallery/items",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["gallery", "items"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get Items by Category",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/gallery/items/category/1",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["gallery", "items", "category", "1"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get Gallery Item by ID",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/gallery/items/1",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["gallery", "items", "1"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Create Gallery Item",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"Classic Burger\",\n  \"description\": \"Our signature burger with premium ingredients\",\n  \"imageUrl\": \"https://example.com/classic-burger.jpg\",\n  \"categoryId\": 1\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/gallery/items",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["gallery", "items"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Update Gallery Item",
+              "request": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"Premium Classic Burger\",\n  \"description\": \"Our signature burger with premium organic ingredients\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/gallery/items/1",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["gallery", "items", "1"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Delete Gallery Item",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/gallery/items/1",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["gallery", "items", "1"]
+                }
+              },
+              "response": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
