@@ -1,6 +1,6 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
-@Entity()
+@Entity('footer')
 export class Footer {
   @PrimaryGeneratedColumn()
   id: number;

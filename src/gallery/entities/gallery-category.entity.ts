@@ -1,7 +1,7 @@
 import { Column, Entity, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
 import { GalleryItem } from './gallery-item.entity';
 
-@Entity()
+@Entity('gallery_categories')
 export class GalleryCategory {
   @PrimaryGeneratedColumn()
   id: number;
