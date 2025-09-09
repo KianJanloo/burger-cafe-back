@@ -24,17 +24,29 @@ import { OrdersModule } from './orders/orders.module';
     }),
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
-      useFactory: (configService: ConfigService) => ({
-        type: 'postgres',
-        host: configService.get('DB_HOST', 'localhost'),
-        port: configService.get('DB_PORT', 5432),
-        username: configService.get('DB_USERNAME', 'postgres'),
-        password: configService.get('DB_PASSWORD', '1388ki8831'),
-        database: configService.get('DB_NAME', 'postgres'),
-        entities: [`${__dirname}/**/*.entity{.ts,.js}`],
-        synchronize: configService.get('NODE_ENV') === 'development',
-        logging: configService.get('NODE_ENV') === 'development',
-      }),
+      useFactory: (configService: ConfigService) => {
+        const dbUrl = configService.get<string>('DB_URL');
+        if (dbUrl) {
+          return {
+            type: 'postgres',
+            url: dbUrl,
+            entities: [`${__dirname}/**/*.entity{.ts,.js}`],
+            synchronize: configService.get('NODE_ENV') === 'development',
+            logging: configService.get('NODE_ENV') === 'development',
+          };
+        }
+        return {
+          type: 'postgres',
+          host: configService.get('DB_HOST', 'localhost'),
+          port: configService.get('DB_PORT', 5432),
+          username: configService.get('DB_USERNAME', 'postgres'),
+          password: configService.get('DB_PASSWORD', '1388ki8831'),
+          database: configService.get('DB_NAME', 'postgres'),
+          entities: [`${__dirname}/**/*.entity{.ts,.js}`],
+          synchronize: configService.get('NODE_ENV') === 'development',
+          logging: configService.get('NODE_ENV') === 'development',
+        };
+      },
       inject: [ConfigService],
     }),
     MenuModule,
