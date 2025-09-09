@@ -25,16 +25,20 @@ import { OrdersModule } from './orders/orders.module';
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
       useFactory: (configService: ConfigService) => {
-        const dbUrl = configService.get<string>('DB_URL');
-        if (dbUrl) {
-          return {
-            type: 'postgres',
-            url: dbUrl,
-            entities: [`${__dirname}/**/*.entity{.ts,.js}`],
-            synchronize: configService.get('NODE_ENV') === 'development',
-            logging: configService.get('NODE_ENV') === 'development',
-          };
-        }
+        // Log environment variables used for TypeORM configuration (in English)
+        console.log('TypeORM config:');
+        console.log('DB_HOST:', configService.get('DB_HOST', 'localhost'));
+        console.log('DB_PORT:', configService.get('DB_PORT', 5432));
+        console.log(
+          'DB_USERNAME:',
+          configService.get('DB_USERNAME', 'postgres'),
+        );
+        console.log(
+          'DB_PASSWORD:',
+          configService.get('DB_PASSWORD', '1388ki8831'),
+        );
+        console.log('DB_NAME:', configService.get('DB_NAME', 'postgres'));
+        console.log('NODE_ENV:', configService.get('NODE_ENV'));
         return {
           type: 'postgres',
           host: configService.get('DB_HOST', 'localhost'),
