@@ -26,6 +26,7 @@ import { OrdersModule } from './orders/orders.module';
       entities: [`${__dirname}/**/*.entity{.ts,.js}`],
       synchronize: process.env.NODE_ENV === 'development',
       logging: process.env.NODE_ENV === 'development',
+      ssl: process.env.NODE_ENV === 'production',
     }),
     MenuModule,
     CommentsModule,
