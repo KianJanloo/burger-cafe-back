@@ -47,8 +47,8 @@ import { OrdersModule } from './orders/orders.module';
           password: configService.get('DB_PASSWORD', '1388ki8831'),
           database: configService.get('DB_NAME', 'postgres'),
           entities: [`${__dirname}/**/*.entity{.ts,.js}`],
-          synchronize: configService.get('NODE_ENV') === 'development',
-          logging: configService.get('NODE_ENV') === 'development',
+          synchronize: true,
+          logging: true,
         };
       },
       inject: [ConfigService],
