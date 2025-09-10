@@ -12,7 +12,6 @@ import { GalleryModule } from './gallery/gallery.module';
 import { ReservationModule } from './reservation/reservation.module';
 import { ContactUsModule } from './contact-us/contact-us.module';
 import { FaqModule } from './faq/faq.module';
-import { CartModule } from './cart/cart.module';
 import { OrdersModule } from './orders/orders.module';
 
 @Module({
@@ -48,7 +47,6 @@ import { OrdersModule } from './orders/orders.module';
     ReservationModule,
     ContactUsModule,
     FaqModule,
-    CartModule,
     OrdersModule,
   ],
   controllers: [AppController],
