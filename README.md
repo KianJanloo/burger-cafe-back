@@ -70,13 +70,13 @@ A comprehensive restaurant management system built with NestJS, providing full C
    npm run start:prod
    ```
 
-The API will be available at `http://localhost:3000`
+The API will be available at `https://burger-cafee.netlify.app`
 
 ## 📚 API Documentation
 
 ### Base URL
 ```
-http://localhost:3000
+https://burger-cafee.netlify.app / http://localhost:3000
 ```
 
 ### API Endpoints
