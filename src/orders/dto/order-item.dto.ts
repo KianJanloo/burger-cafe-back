@@ -1,46 +1,37 @@
-import { IsNotEmpty, IsString, IsNumber, IsOptional } from 'class-validator';
+import { IsNotEmpty, IsNumber, IsString, IsOptional } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
 
-export class CreateCartDto {
+export class OrderItemDto {
   @ApiProperty({
-    description: 'Unique session ID for the cart',
-    example: 'sess_1234567890abcdef',
-    maxLength: 100
-  })
-  @IsString()
-  @IsNotEmpty()
-  sessionId: string;
-
-  @ApiProperty({
-    description: 'ID of the food item to add to cart',
+    description: 'ID of the menu item',
     example: 1,
     type: 'integer'
   })
   @IsNumber()
   @IsNotEmpty()
-  foodId: number;
+  menuItemId: number;
 
   @ApiProperty({
-    description: 'Name of the food item',
+    description: 'Name of the menu item',
     example: 'Classic Burger',
     maxLength: 100
   })
   @IsString()
   @IsNotEmpty()
-  foodName: string;
+  name: string;
 
   @ApiProperty({
-    description: 'Price of the food item',
+    description: 'Price of the menu item',
     example: 12.99,
     type: 'number',
     format: 'decimal'
   })
   @IsNumber()
   @IsNotEmpty()
-  foodPrice: number;
+  price: number;
 
   @ApiProperty({
-    description: 'Quantity of the food item',
+    description: 'Quantity of the item',
     example: 2,
     minimum: 1,
     maximum: 10
