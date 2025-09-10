@@ -74,6 +74,22 @@ The API will be available at `https://burger-cafee.netlify.app`
 
 ## 📚 API Documentation
 
+### Swagger UI Documentation
+
+The API includes comprehensive Swagger documentation that provides an interactive interface for testing and exploring all endpoints.
+
+**Access Swagger UI:**
+- **Development**: `http://localhost:3000/swagger`
+- **Production**: `https://api.burger-cafee.netlify.app/swagger`
+
+**Features:**
+- Interactive API testing interface
+- Complete endpoint documentation with request/response schemas
+- Try-it-out functionality for all endpoints
+- Organized by modules with tags
+- Example requests and responses
+- Authentication information (if applicable)
+
 ### Base URL
 ```
 https://burger-cafee.netlify.app / http://localhost:3000
@@ -321,7 +337,28 @@ https://burger-cafee.netlify.app / http://localhost:3000
 }
 ```
 
-## 🧪 Testing with Postman
+## 🧪 Testing the API
+
+### Using Swagger UI (Recommended)
+
+1. **Start the application**
+   ```bash
+   npm run start:dev
+   ```
+
+2. **Open Swagger UI**
+   - Navigate to `http://localhost:3000/swagger`
+   - Explore all available endpoints organized by modules
+   - Use the "Try it out" button to test endpoints directly in the browser
+   - View request/response schemas and examples
+
+3. **Testing Endpoints**
+   - All endpoints are documented with example requests
+   - You can modify request parameters and body content
+   - View real-time responses and status codes
+   - Test different scenarios and edge cases
+
+### Using Postman
 
 1. **Import the Collection**
    - Open Postman
@@ -363,6 +400,23 @@ npm run lint               # Run ESLint
 npm run format             # Format code with Prettier
 ```
 
+### Swagger Configuration
+
+The Swagger documentation is configured in `src/main.ts` with the following features:
+
+- **Title**: Burger Cafe API
+- **Version**: 1.0.0
+- **Description**: Comprehensive restaurant management system API
+- **Tags**: Organized by modules (Menu, Orders, Reservations, etc.)
+- **Servers**: Development and production server configurations
+- **Path**: Available at `/swagger` endpoint
+
+**Customizing Swagger:**
+- Modify the `DocumentBuilder` configuration in `main.ts`
+- Add new tags for new modules
+- Update server URLs for different environments
+- Customize API description and metadata
+
 ### Project Structure
 
 ```
@@ -379,7 +433,7 @@ src/
 ├── orders/                # Orders module
 ├── reservation/           # Reservation module
 ├── app.module.ts          # Main application module
-├── main.ts                # Application entry point
+├── main.ts                # Application entry point (Swagger config)
 └── app.controller.ts      # Main application controller
 ```
 
@@ -442,6 +496,26 @@ The API uses class-validator for request validation. All DTOs include proper val
 - `@IsDateString()` - Validates date string format
 - `@IsBoolean()` - Validates boolean type
 
+## 📖 Swagger Documentation Features
+
+### Interactive Testing
+- **Try it out**: Test any endpoint directly from the Swagger UI
+- **Request/Response Examples**: See real examples for each endpoint
+- **Parameter Validation**: Visual feedback for required/optional parameters
+- **Error Handling**: Clear error messages and status codes
+
+### Documentation Organization
+- **Module-based Tags**: Endpoints grouped by functionality
+- **Detailed Descriptions**: Each endpoint includes purpose and usage
+- **Schema Definitions**: Complete request/response models
+- **HTTP Methods**: Clear indication of supported operations
+
+### Development Benefits
+- **API Discovery**: Easy exploration of available endpoints
+- **Integration Testing**: Quick validation of API functionality
+- **Client Generation**: Generate client SDKs from Swagger spec
+- **Team Collaboration**: Shared understanding of API structure
+
 ## 🤝 Contributing
 
 1. Fork the repository
@@ -457,6 +531,16 @@ This project is licensed under the UNLICENSED License.
 ## 📞 Support
 
 For support and questions, please contact us through the contact form API endpoint or create an issue in the repository.
+
+## 🔗 Quick Links
+
+### Swagger Documentation
+- **Development**: [http://localhost:3000/swagger](http://localhost:3000/swagger)
+- **Production**: [https://api.burger-cafee.netlify.app/swagger](https://api.burger-cafee.netlify.app/swagger)
+
+### API Endpoints
+- **Base URL (Dev)**: `http://localhost:3000`
+- **Base URL (Prod)**: `https://api.burger-cafee.netlify.app`
 
 ---
 
