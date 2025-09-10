@@ -15,8 +15,6 @@ export class MenuService {
   async create(createMenuDto: CreateMenuDto) {
     return this.foodRepository.save({
       ...createMenuDto,
-      createdAt: new Date(),
-      updatedAt: new Date(),
     });
   }
 
@@ -45,6 +43,9 @@ export class MenuService {
     if (!food) {
       throw new NotFoundException('Food not found');
     }
-    return this.foodRepository.delete(food);
+    await this.foodRepository.delete(food);
+    return {
+      message: 'Food deleted successfully',
+    };
   }
 }

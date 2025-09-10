@@ -9,7 +9,7 @@ export class Food {
   name: string;
 
   @Column({ nullable: false })
-  price: number;
+  price: string;
 
   @Column({ nullable: false })
   description: string;
@@ -17,7 +17,7 @@ export class Food {
   @Column({ nullable: false })
   image: string;
 
-  @Column({ nullable: false })
+  @Column({ nullable: false, default: 0 })
   rating: number;
 
   @Column({ nullable: false, default: true })

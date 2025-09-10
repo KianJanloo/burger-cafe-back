@@ -12,7 +12,9 @@ export class ReservationService {
     private reservationRepository: Repository<Reservation>,
   ) {}
 
-  async create(createReservationDto: CreateReservationDto): Promise<Reservation> {
+  async create(
+    createReservationDto: CreateReservationDto,
+  ): Promise<Reservation> {
     const reservation = this.reservationRepository.create(createReservationDto);
     return this.reservationRepository.save(reservation);
   }
@@ -22,7 +24,9 @@ export class ReservationService {
   }
 
   async findOne(id: number): Promise<Reservation> {
-    const reservation = await this.reservationRepository.findOne({ where: { id } });
+    const reservation = await this.reservationRepository.findOne({
+      where: { id },
+    });
     if (!reservation) {
       throw new NotFoundException('Reservation not found');
     }
@@ -30,12 +34,15 @@ export class ReservationService {
   }
 
   async findByDate(date: string): Promise<Reservation[]> {
-    return this.reservationRepository.find({ 
-      where: { date: new Date(date) } 
+    return this.reservationRepository.find({
+      where: { date: new Date(date) },
     });
   }
 
-  async update(id: number, updateReservationDto: UpdateReservationDto): Promise<Reservation> {
+  async update(
+    id: number,
+    updateReservationDto: UpdateReservationDto,
+  ): Promise<Reservation> {
     await this.reservationRepository.update(id, updateReservationDto);
     return this.findOne(id);
   }
@@ -45,7 +52,16 @@ export class ReservationService {
     return this.findOne(id);
   }
 
-  async remove(id: number): Promise<void> {
-    await this.reservationRepository.delete(id);
+  async remove(id: number): Promise<{ message: string }> {
+    const reservation = await this.reservationRepository.findOne({
+      where: { id },
+    });
+    if (!reservation) {
+      throw new NotFoundException('Reservation not found');
+    }
+    await this.reservationRepository.delete(reservation);
+    return {
+      message: 'Reservation deleted successfully',
+    };
   }
 }

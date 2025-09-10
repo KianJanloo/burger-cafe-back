@@ -17,10 +17,10 @@ export class Order {
   @Column({ nullable: true })
   customerEmail: string;
 
-  @Column({ 
-    type: 'enum', 
-    enum: ['dine_in', 'takeaway', 'delivery'], 
-    nullable: false 
+  @Column({
+    type: 'enum',
+    enum: ['dine_in', 'takeaway', 'delivery'],
+    nullable: false,
   })
   orderType: string;
 
@@ -30,19 +30,38 @@ export class Order {
   @Column({ type: 'decimal', precision: 10, scale: 2, nullable: false })
   subtotal: number;
 
-  @Column({ type: 'decimal', precision: 10, scale: 2, nullable: false, default: 0 })
+  @Column({
+    type: 'decimal',
+    precision: 10,
+    scale: 2,
+    nullable: false,
+    default: 0,
+  })
   deliveryFee: number;
 
-  @Column({ type: 'decimal', precision: 10, scale: 2, nullable: false, default: 0 })
+  @Column({
+    type: 'decimal',
+    precision: 10,
+    scale: 2,
+    nullable: false,
+    default: 0,
+  })
   tax: number;
 
   @Column({ type: 'decimal', precision: 10, scale: 2, nullable: false })
   total: number;
 
-  @Column({ 
-    type: 'enum', 
-    enum: ['pending', 'confirmed', 'preparing', 'ready', 'delivered', 'cancelled'], 
-    default: 'pending' 
+  @Column({
+    type: 'enum',
+    enum: [
+      'pending',
+      'confirmed',
+      'preparing',
+      'ready',
+      'delivered',
+      'cancelled',
+    ],
+    default: 'pending',
   })
   status: string;
 

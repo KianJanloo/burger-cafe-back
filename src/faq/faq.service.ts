@@ -43,7 +43,14 @@ export class FaqService {
     return this.findOne(id);
   }
 
-  async remove(id: number): Promise<void> {
+  async remove(id: number): Promise<{ message: string }> {
+    const faq = await this.findOne(id);
+    if (!faq) {
+      throw new NotFoundException('FAQ not found');
+    }
     await this.faqRepository.delete(id);
+    return {
+      message: 'FAQ deleted successfully',
+    };
   }
 }

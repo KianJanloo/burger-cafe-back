@@ -5,9 +5,9 @@ export class CreateMenuDto {
   @IsNotEmpty()
   name: string;
 
-  @IsNumber()
+  @IsString()
   @IsNotEmpty()
-  price: number;
+  price: string;
 
   @IsString()
   @IsNotEmpty()

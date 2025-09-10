@@ -57,12 +57,22 @@ export class CartService {
     return this.findOne(id);
   }
 
-  async remove(id: number): Promise<void> {
+  async remove(id: number): Promise<{ message: string }> {
+    const cart = await this.findOne(id);
+    if (!cart) {
+      throw new NotFoundException('Cart item not found');
+    }
     await this.cartRepository.delete(id);
+    return {
+      message: 'Cart item deleted successfully',
+    };
   }
 
-  async clearSession(sessionId: string): Promise<void> {
-    await this.cartRepository.delete({ sessionId });
+  async clearSession(sessionId: string): Promise<{ message: string }> {
+    const result = await this.cartRepository.delete({ sessionId });
+    return {
+      message: `Cleared ${result.affected} cart items successfully`,
+    };
   }
 
   async getCartTotal(sessionId: string): Promise<number> {

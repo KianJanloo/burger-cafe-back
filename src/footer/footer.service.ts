@@ -34,7 +34,14 @@ export class FooterService {
     return this.findOne(id);
   }
 
-  async remove(id: number): Promise<void> {
+  async remove(id: number): Promise<{ message: string }> {
+    const footer = await this.findOne(id);
+    if (!footer) {
+      throw new NotFoundException('Footer not found');
+    }
     await this.footerRepository.delete(id);
+    return {
+      message: 'Footer deleted successfully',
+    };
   }
 }

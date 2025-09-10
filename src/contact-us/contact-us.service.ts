@@ -33,7 +33,10 @@ export class ContactUsService {
     return this.contactUsRepository.find({ where: { status } });
   }
 
-  async update(id: number, updateContactUsDto: UpdateContactUsDto): Promise<ContactUs> {
+  async update(
+    id: number,
+    updateContactUsDto: UpdateContactUsDto,
+  ): Promise<ContactUs> {
     await this.contactUsRepository.update(id, updateContactUsDto);
     return this.findOne(id);
   }
@@ -43,7 +46,14 @@ export class ContactUsService {
     return this.findOne(id);
   }
 
-  async remove(id: number): Promise<void> {
+  async remove(id: number): Promise<{ message: string }> {
+    const contactUs = await this.findOne(id);
+    if (!contactUs) {
+      throw new NotFoundException('Contact message not found');
+    }
     await this.contactUsRepository.delete(id);
+    return {
+      message: 'Contact message deleted successfully',
+    };
   }
 }

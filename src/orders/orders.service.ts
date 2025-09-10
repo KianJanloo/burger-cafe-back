@@ -67,8 +67,15 @@ export class OrdersService {
     return this.findOne(id);
   }
 
-  async remove(id: number): Promise<void> {
-    await this.orderRepository.delete(id);
+  async remove(id: number): Promise<{ message: string }> {
+    const order = await this.orderRepository.findOne({ where: { id } });
+    if (!order) {
+      throw new NotFoundException('Order not found');
+    }
+    await this.orderRepository.delete(order);
+    return {
+      message: 'Order deleted successfully',
+    };
   }
 
   private generateOrderNumber(): string {

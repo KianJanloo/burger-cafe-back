@@ -43,8 +43,15 @@ export class GalleryService {
     return this.findOneCategory(id);
   }
 
-  async removeCategory(id: number): Promise<void> {
+  async removeCategory(id: number): Promise<{ message: string }> {
+    const category = await this.findOneCategory(id);
+    if (!category) {
+      throw new NotFoundException('Gallery category not found');
+    }
     await this.galleryCategoryRepository.delete(id);
+    return {
+      message: 'Gallery category deleted successfully',
+    };
   }
 
   // Gallery Item methods
@@ -80,7 +87,14 @@ export class GalleryService {
     return this.findOneItem(id);
   }
 
-  async removeItem(id: number): Promise<void> {
+  async removeItem(id: number): Promise<{ message: string }> {
+    const item = await this.findOneItem(id);
+    if (!item) {
+      throw new NotFoundException('Gallery item not found');
+    }
     await this.galleryItemRepository.delete(id);
+    return {
+      message: 'Gallery item deleted successfully',
+    };
   }
 }

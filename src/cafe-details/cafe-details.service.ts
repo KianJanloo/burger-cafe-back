@@ -41,7 +41,14 @@ export class CafeDetailsService {
     return this.findOne(id);
   }
 
-  async remove(id: number): Promise<void> {
+  async remove(id: number): Promise<{ message: string }> {
+    const cafeDetails = await this.findOne(id);
+    if (!cafeDetails) {
+      throw new NotFoundException('Cafe details not found');
+    }
     await this.cafeDetailsRepository.delete(id);
+    return {
+      message: 'Cafe details deleted successfully',
+    };
   }
 }

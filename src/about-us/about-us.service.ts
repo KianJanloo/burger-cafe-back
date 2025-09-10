@@ -39,8 +39,15 @@ export class AboutUsService {
     return aboutUs;
   }
 
-  async removeStory(id: number): Promise<void> {
+  async removeStory(id: number): Promise<{ message: string }> {
+    const story = await this.aboutUsRepository.findOne({ where: { id } });
+    if (!story) {
+      throw new NotFoundException('Story not found');
+    }
     await this.aboutUsRepository.delete(id);
+    return {
+      message: 'Story deleted successfully',
+    };
   }
 
   // Team Member methods
@@ -79,7 +86,14 @@ export class AboutUsService {
     return teamMember;
   }
 
-  async removeTeamMember(id: number): Promise<void> {
+  async removeTeamMember(id: number): Promise<{ message: string }> {
+    const teamMember = await this.findOneTeamMember(id);
+    if (!teamMember) {
+      throw new NotFoundException('Team member not found');
+    }
     await this.teamMemberRepository.delete(id);
+    return {
+      message: 'Team member deleted successfully',
+    };
   }
 }

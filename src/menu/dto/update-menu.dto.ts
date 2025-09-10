@@ -1,35 +1,4 @@
-import { IsBoolean, IsNotEmpty, IsNumber, IsString } from 'class-validator';
+import { PartialType } from '@nestjs/mapped-types';
+import { CreateMenuDto } from './create-menu.dto';
 
-export class UpdateMenuDto {
-  @IsString()
-  @IsNotEmpty()
-  name: string;
-
-  @IsNumber()
-  @IsNotEmpty()
-  price: number;
-
-  @IsString()
-  @IsNotEmpty()
-  description: string;
-
-  @IsString()
-  @IsNotEmpty()
-  image: string;
-
-  @IsString()
-  @IsNotEmpty()
-  category: string;
-
-  @IsNumber()
-  @IsNotEmpty()
-  duration: number;
-
-  @IsBoolean()
-  @IsNotEmpty()
-  isAvailable: boolean;
-
-  @IsNumber()
-  @IsNotEmpty()
-  rating: number;
-}
+export class UpdateMenuDto extends PartialType(CreateMenuDto) {}

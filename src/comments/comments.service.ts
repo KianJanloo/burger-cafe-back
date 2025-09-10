@@ -37,11 +37,14 @@ export class CommentsService {
     return this.commentRepository.save({ ...comment, ...updateCommentDto });
   }
 
-  async remove(id: number) {
+  async remove(id: number): Promise<{ message: string }> {
     const comment = await this.commentRepository.findOne({ where: { id } });
     if (!comment) {
       throw new NotFoundException('Comment not found');
     }
-    return this.commentRepository.delete(comment);
+    await this.commentRepository.delete(comment);
+    return {
+      message: 'Comment deleted successfully',
+    };
   }
 }
